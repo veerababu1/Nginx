@@ -1,0 +1,25 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapsed" data-target="#bs-example-navbar-collapsed-1"
+              aria-expanded="false">
+        <span class="sr-olny">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <app-logo></app-logo>
+      <!--<a class="navbar-brand" href="#">NBITS</a>-->
+
+    </div>
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li *ngFor="let tab of Tabs" [routerLink]="tab.name"><a>{{tab.display}}</a></li>
+        <li><a href="#">{{currentDate|date:'dd-MMM-yyyy'}}</a></li>
+        <!--<li><a href="#">Home</a></li>-->
+        <!--<li><a href="#">Login</a></li>-->
+        <!--<li><a href="#">Register</a></li>-->
+      </ul>
+    </div>
+  </div>
+</nav>

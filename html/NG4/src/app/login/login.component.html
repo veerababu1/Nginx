@@ -1,0 +1,104 @@
+<form class="omb_login" [formGroup]="loginForm">
+
+  <h3 class="omb_authTitle">Login or <a href="#">Sign up</a></h3>
+  <div class="row omb_row-sm-offset-3 omb_socialButtons">
+    <div class="col-xs-4 col-sm-2">
+      <a href="#" class="btn btn-lg btn-block omb_btn-facebook">
+        <i class="fa fa-facebook visible-xs"></i>
+        <span class="hidden-xs">Facebook</span>
+      </a>
+    </div>
+    <div class="col-xs-4 col-sm-2">
+      <a href="#" class="btn btn-lg btn-block omb_btn-twitter">
+        <i class="fa fa-twitter visible-xs"></i>
+        <span class="hidden-xs">Twitter</span>
+      </a>
+    </div>
+    <div class="col-xs-4 col-sm-2">
+      <a href="#" class="btn btn-lg btn-block omb  <n-goo
+  ">
+        <i class="fa fa-google-plus visible-xs"></i>
+        <span class="hidden-xs">Google+</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="row omb_row-sm-offset-3 omb_loginOr">
+    <div class="col-xs-12 col-sm-6">
+      <hr class="omb_hrOr">
+      <span class="omb_spanOr">or</span>
+    </div>
+  </div>
+
+  <div class="row omb_row-sm-offset-3">
+    <div class="col-xs-12 col-sm-6">
+      <div class="omb_loginForm" action="" autocomplete="off" method="GET">
+
+
+        <div class="input-group">
+          <span class="input-group-addon"><i class="fa fa-user"></i></span>
+          <input type="text" class="form-control"
+                 appRestrictedCharacters
+                 [pattern]="alphabetsPattern"
+                 name="username"
+                 [formControl]="loginForm.controls['username']"
+                 placeholder="email address">
+        </div>
+        <!--<span class="help-block" *ngIf="loginForm.controls['username'].hasError('required')">UserName is Required</span>-->
+        <div class="input-group">
+          <div class="alert alert-danger fade in" *ngIf="loginForm.controls['username'].dirty && loginForm.invalid">
+            <span *ngIf="loginForm.controls['username'].hasError('required')"> Email Id is Required</span>
+            <!--<span class="help-block" *ngIf="loginForm.controls['username'].hasError('requred')">Email Id is Required</span>-->
+            <span class="help-block" *ngIf="loginForm.controls['username'].hasError('pattern')">Email id must be valid </span>
+            <span class="help-block" *ngIf="loginForm.controls['username'].hasError('minLength')">UserName min length is 4 characters</span>
+            <span class="help-block" *ngIf="loginForm.controls['username'].hasError('maxLength')">UserName max length is 14 characters </span>
+          </div>
+
+         <!-- <span class="help-block" *ngIf="loginForm.controls['username'].hasError('requred')">Email Id is Required</span>
+          <span class="help-block" *ngIf="loginForm.controls['username'].hasError('pattern')">Email id must be valid </span>
+          <span class="help-block" *ngIf="loginForm.controls['username'].hasError('minLength')">UserName min length is 4 characters</span>
+          <span class="help-block" *ngIf="loginForm.controls['username'].hasError('maxLength')">UserName max length is 14 characters </span>-->
+        </div>
+
+        <div class="input-group">
+          <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+          <input  type="password"  (keypress)="test" class="form-control" name="password"
+                  [formControl]="loginForm.controls['password']"
+                  placeholder="Password">
+        </div>
+        <!--<span class="help-block" *ngIf="loginForm.controls['password'].hasError('minlength')"> Password error</span>-->
+          <div class="input-group">
+            <div class="alert alert-danger fade in" *ngIf="loginForm.controls['password'].dirty && loginForm.invalid">
+              <span *ngIf="loginForm.controls['password'].hasError('required')"> password is Required</span>
+              <span class="help-block" *ngIf="loginForm.controls['password'].hasError('minlength')">password min length is 6 characters</span>
+              <span class="help-block" *ngIf="loginForm.controls['password'].hasError('maxLength')">password max length is 14 characters </span>
+              <span class="help-block" *ngIf="loginForm.controls['password'].hasError('pattern')"> password Should be Alphanumeric </span>
+
+            </div>
+
+           <!-- <span class="help-block" *ngIf="loginForm.controls['password'].hasError('requred')">password is Required</span>
+            <span class="help-block" *ngIf="loginForm.controls['password'].hasError('minlength')">password min length is 6 characters</span>
+            <span class="help-block" *ngIf="loginForm.controls['password'].hasError('maxLength')">password max length is 14 characters </span>
+            <span class="help-block" *ngIf="loginForm.controls['password'].hasError('pattern')"> password Should be Alphanumeric </span>-->
+          </div>
+        <button class="btn btn-lg btn-primary btn-block" (click)="Login()">Login</button>
+      </div>
+    </div>
+  </div>
+  <div class="row omb_row-sm-offset-3">
+    <div class="col-xs-12 col-sm-3">
+      <label class="checkbox">
+        <input type="checkbox" value="remember-me" [(ngModel)]="LoginDetails.RememberMe">Remember Me
+      </label>
+    </div>
+    <div class="col-xs-12 col-sm-3">
+      <p class="omb_forgotPwd">
+        <a href="#">Forgot password? </a>
+      </p>
+    </div>
+  </div>
+</form>
+{{LoginDetails|json}}
+
+
+

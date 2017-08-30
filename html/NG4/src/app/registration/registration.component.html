@@ -1,0 +1,109 @@
+<div class="omb_login">
+<div class="row omb_row-sm-offset-3">
+  <div class="col-xs-12 col-sm-6">
+    <div class="omb_loginForm" action="" autocomplete="off" method="POST">
+
+      <div class="input-group">
+        <!--<span class="input-group-addon"><i class="fa fa-user"></i></span>-->
+        <input type="text" class="form-control"
+               [(ngModel)]="UserDetails.FirstName"
+               appRestrictedCharacters
+               [pattern]="alphabetsOnly"
+               name="FirstName" placeholder="First Name">
+      </div>
+      <span class="help-block"></span>
+
+      <div class="input-group">
+        <!--<span class="input-group-addon"><i class="fa fa-user"></i></span>-->
+        <input type="text" class="form-control"
+               [(ngModel)]="UserDetails.LastName"
+               appRestrictedCharacters
+               [pattern]="alphabetsOnly"
+               name="lastName"  placeholder="last Name">
+      </div>
+      <span class="help-block"></span>
+      <div class="input-group">
+        <!--<span class="input-group-addon"><i class="fa fa-user"></i></span>-->
+        <input type="text" class="form-control"
+               [(ngModel)]="UserDetails.UserName"
+               appRestrictedCharacters
+               [pattern]="usernamePattern"
+               name="UserName"  placeholder="User Name">
+      </div>
+      <span class="help-block"></span>
+
+      <div class="input-group">
+        <input type="text" class="form-control"
+               [(ngModel)]="UserDetails.DOB"
+               appDatepicker
+               name="DOB" placeholder="Date of Birth">
+      </div>
+      <span class="help-block"></span>
+
+      <div class="input-group">
+        <input type="text" class="form-control"
+               [(ngModel)]="UserDetails.Phone"
+               appRestrictedCharacters
+               [pattern]="numbersPat"
+               name="phone" placeholder="Phone Number">
+      </div>
+      <span class="help-block"></span>
+
+
+      <div class="input-group">
+        <!--<span class="input-group-addon"><i class="fa fa-user"></i></span>-->
+        <input  type="password" class="form-control" name="password"
+                [(ngModel)]="UserDetails.Password"
+                appRestrictedCharacters
+                [pattern]="passwordPattern"
+                placeholder="Password">
+      </div>
+
+      <div class="input-group">
+        <!--<span class="input-group-addon"><i class="fa fa-user"></i></span>-->
+        <input type="radio"
+               [(ngModel)]="UserDetails.Gender"
+               name="Gender"  value="Male"> Male
+        <input type="radio"
+               [(ngModel)]="UserDetails.Gender"
+               name="Gender"  value="Female"> Female
+      </div>
+
+      <div class="input-group">
+        <select class="forrm-control"  [(ngModel)]="UserDetails.Counries" (change)="CountryChanged()">
+          <option *ngFor="let item of Counries" value="{{item.code}}">{{item.name}}</option>
+        </select>
+      </div>
+
+      <div class="input-group">
+        <app-dropdown [items]="YearList" (onValueChange)="childSelectedYear($event)"></app-dropdown>
+      </div>
+      <div class="input-group">
+        <app-dropdown [items]="MonthList" (onValueChange)="childSelectedMonth($event)"></app-dropdown>
+      </div>
+      <div class="input-group">
+        <app-dropdown [items]="Date"></app-dropdown>
+      </div>
+
+
+      <div class="input-group">
+        <input type="text" [disabled]="UserDetails.Counries=='IND'" class="forrm-control">
+      </div>
+
+      <span class="help-block">Password error</span>
+
+      <div class="input-group">
+        <!--<span class="input-group-addon"><i class="fa fa-user"></i></span>-->
+        <input type="checkbox"
+               [(ngModel)]="UserDetails.RememberMe"
+               name="RememberMe" >Remember Me
+      </div>
+      <span class="help-block"></span>
+
+      <button class="btn btn-lg btn-primary btn-block" (click)="registerUser()">Register</button>
+    </div>
+  </div>
+</div>
+</div>
+<br>
+{{UserDetails|json}}

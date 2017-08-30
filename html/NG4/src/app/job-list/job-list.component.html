@@ -1,0 +1,17 @@
+<div>
+<table class="table tbl-striped">
+  <tr *ngFor="let job of Jobs">
+    <td>{{job.Title}}</td>
+    <td>{{job.Description}}</td>
+    <td>{{job.Location}}</td>
+<!--
+    <td><a [routerLink]="['jobDetails']">Details</a></td>
+-->
+    <td><button class="btn btn-primary" (click)='displayDetails(job)'>Show Details</button></td>
+  </tr>
+</table>
+  <app-job-details [jobDetails]= 'SelectedJob'></app-job-details>
+</div>
+<!--
+<router-outlet></router-outlet>
+-->
